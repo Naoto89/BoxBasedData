@@ -31,13 +31,46 @@ namespace BoxBasedDataTest
         /// </summary>
         private void InitializeComponent()
         {
+            treeView_Test = new TreeView();
+            button_Load = new Button();
+            button_Save = new Button();
             SuspendLayout();
+            // 
+            // treeView_Test
+            // 
+            treeView_Test.Location = new Point(12, 12);
+            treeView_Test.Name = "treeView_Test";
+            treeView_Test.Size = new Size(603, 426);
+            treeView_Test.TabIndex = 0;
+            // 
+            // button_Load
+            // 
+            button_Load.Location = new Point(621, 12);
+            button_Load.Name = "button_Load";
+            button_Load.Size = new Size(167, 50);
+            button_Load.TabIndex = 1;
+            button_Load.Text = "読み込み";
+            button_Load.UseVisualStyleBackColor = true;
+            button_Load.Click += button_Load_Click;
+            // 
+            // button_Save
+            // 
+            button_Save.Location = new Point(621, 68);
+            button_Save.Name = "button_Save";
+            button_Save.Size = new Size(167, 50);
+            button_Save.TabIndex = 1;
+            button_Save.Text = "保存";
+            button_Save.UseVisualStyleBackColor = true;
+            button_Save.Click += button_Save_Click;
             // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button_Save);
+            Controls.Add(button_Load);
+            Controls.Add(treeView_Test);
             Name = "FormMain";
             Text = "Box構造データ読み書きテスト";
             Load += FormMain_Load;
@@ -45,5 +78,9 @@ namespace BoxBasedDataTest
         }
 
         #endregion
+
+        private TreeView treeView_Test;
+        private Button button_Load;
+        private Button button_Save;
     }
 }

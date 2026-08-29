@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace BoxBasedDataLib
 {
@@ -35,7 +36,7 @@ namespace BoxBasedDataLib
         public string TypeStr { get; set; }
 
         /// <summary>
-        /// Boxが保持するデータ。
+        /// Box自信が保持するデータ。
         /// ChildCountが0の場合に使用する。
         /// </summary>
         public byte[] Data { get; private set; }
@@ -96,10 +97,10 @@ namespace BoxBasedDataLib
         /// <exception cref="InvalidOperationException"></exception>
         public void AddChild(Box child)
         {
-            if (Data.Length > 0)
-            {
-                throw new InvalidOperationException("Data box cannot have children.");
-            }
+            //if (Data.Length > 0)
+            //{
+            //    throw new InvalidOperationException("Data box cannot have children.");
+            //}
 
             Children.Add(child);
         }
@@ -141,6 +142,22 @@ namespace BoxBasedDataLib
         public IEnumerable<Box> GetChildren(string typeStr)
         {
             return Children.Where(x => x.TypeStr == typeStr);
+        }
+
+        /// <summary>
+        /// ツリービューに表示するノードの生成
+        /// </summary>
+        /// <returns></returns>
+        virtual public TreeNode CreateTreeNode()
+        {
+            TreeNode node = new TreeNode($"{TypeStr} ({Size} bytes)");
+
+            foreach (Box child in Children)
+            {
+                node.Nodes.Add(child.CreateTreeNode());
+            }
+
+            return node;
         }
     }
 }
