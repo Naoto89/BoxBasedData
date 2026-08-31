@@ -159,5 +159,27 @@ namespace BoxBasedDataLib
 
             return node;
         }
+
+        /// <summary>
+        /// 例えばツリービューを右クリックしたときの表示メニューを上位に提供
+        /// </summary>
+        /// <returns></returns>
+        public virtual ContextMenuStrip CreateContextMenu()
+        {
+            //ContextMenuStrip menu = new ContextMenuStrip();
+
+            //menu.Items.Add("サイズを表示");
+
+            //return menu;
+            return null;
+        }
+
+        /// <summary>
+        /// 例えばツリービューをダブルクリックしたときのアクションを上位に提供
+        /// </summary>
+        public virtual void OnTreeNodeDoubleClick()
+        {
+            // 基底Boxでは何もしない
+        }
     }
 }
